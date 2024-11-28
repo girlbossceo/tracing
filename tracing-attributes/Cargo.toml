@@ -8,7 +8,7 @@ name = "tracing-attributes"
 #   - README.md
 # - Update CHANGELOG.md.
 # - Create "v0.1.x" git tag.
-version = "0.1.27"
+version = "0.1.28"
 authors = [
     "Tokio Contributors <team@tokio.rs>",
     "Eliza Weisman <eliza@buoyant.io>",
@@ -40,17 +40,31 @@ async-await = []
 
 [dependencies]
 proc-macro2 = "1.0.60"
-syn = { version = "2.0", default-features = false, features = ["full", "parsing", "printing", "visit-mut", "clone-impls", "extra-traits", "proc-macro"] }
+syn = { version = "2.0", default-features = false, features = [
+    "full",
+    "parsing",
+    "printing",
+    "visit-mut",
+    "clone-impls",
+    "extra-traits",
+    "proc-macro",
+] }
 quote = "1.0.20"
 
 [dev-dependencies]
 tracing = { path = "../tracing", version = "0.1.35" }
-tracing-mock = { path = "../tracing-mock", features = ["tokio-test"] }
-tracing-subscriber = { path = "../tracing-subscriber", version = "0.3.0", features = ["env-filter"] }
+tracing-mock = { path = "../tracing-mock" }
 tokio-test = "0.4.2"
+tracing-subscriber = { path = "../tracing-subscriber", version = "0.3.0", features = [
+    "env-filter",
+] }
+tracing-test = { path = "../tracing-test" }
 async-trait = "0.1.67"
 trybuild = "1.0.64"
 rustversion = "1.0.9"
 
 [badges]
 maintenance = { status = "experimental" }
+
+[lints]
+workspace = true
