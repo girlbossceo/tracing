@@ -25,6 +25,3 @@ tracing-subscriber = { path = "../tracing-subscriber", version = "0.3.0", featur
 
 [badges]
 maintenance = { status = "experimental" }
-
-[lints]
-workspace = true
