@@ -800,7 +800,7 @@ where
     }
 }
 
-impl<'a, W> io::Write for MutexGuardWriter<'a, W>
+impl<W> io::Write for MutexGuardWriter<'_, W>
 where
     W: io::Write,
 {
@@ -1177,7 +1177,7 @@ impl<'a> WriteAdaptor<'a> {
     }
 }
 #[cfg(any(feature = "json", feature = "time"))]
-impl<'a> io::Write for WriteAdaptor<'a> {
+impl io::Write for WriteAdaptor<'_> {
     fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
         let s =
             std::str::from_utf8(buf).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))?;
@@ -1186,7 +1186,7 @@ impl<'a> io::Write for WriteAdaptor<'a> {
             .write_str(s)
             .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?;
 
-        Ok(s.as_bytes().len())
+        Ok(s.len())
     }
 
     fn flush(&mut self) -> io::Result<()> {
@@ -1195,7 +1195,7 @@ impl<'a> io::Write for WriteAdaptor<'a> {
 }
 
 #[cfg(any(feature = "json", feature = "time"))]
-impl<'a> fmt::Debug for WriteAdaptor<'a> {
+impl fmt::Debug for WriteAdaptor<'_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.pad("WriteAdaptor { .. }")
     }

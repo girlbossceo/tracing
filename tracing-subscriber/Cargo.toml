@@ -1,6 +1,6 @@
 [package]
 name = "tracing-subscriber"
-version = "0.3.18"
+version = "0.3.19"
 authors = [
     "Eliza Weisman <eliza@buoyant.io>",
     "David Barsky <me@davidbarsky.com>",
@@ -39,7 +39,7 @@ local-time = ["time/local-offset"]
 nu-ansi-term = ["dep:nu-ansi-term"]
 
 [dependencies]
-tracing-core = { path = "../tracing-core", version = "0.1.30", default-features = false }
+tracing-core = { path = "../tracing-core", version = "0.1.33", default-features = false }
 
 # only required by the filter feature
 tracing = { optional = true, path = "../tracing", version = "0.1.41", default-features = false }
